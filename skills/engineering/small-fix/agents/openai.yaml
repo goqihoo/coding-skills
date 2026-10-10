@@ -1,0 +1,3 @@
+interface:
+  display_name: "Small Fix"
+  short_description: "Make a tight fix with a regression guard"
