@@ -26,6 +26,10 @@ names=()
 srcs=()
 while IFS= read -r -d '' skill_md; do
   src="$(dirname "$skill_md")"
+  if [ ! -f "$src/agents/openai.yaml" ]; then
+    echo "error: $src is missing agents/openai.yaml." >&2
+    exit 1
+  fi
   names+=("$(basename "$src")")
   srcs+=("$src")
 done < <(find "$REPO/skills" -name SKILL.md -not -path '*/node_modules/*' -not -path '*/deprecated/*' -not -path '*/misc/*' -print0)
